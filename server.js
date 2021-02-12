@@ -1,38 +1,29 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
-//load env vars
 
+//Routes Conncet 
+const bootcamps = require('./routes/bootcamps');
+//load env vars
 dotenv.config({ path: './config/config.env' });
 
 const app = express();
 
-app.get('/', (req, res) => {
 
-    //res.send('Hello Node')
-    //res.json({ name: 'Band', model: '1000' });
-    //res.sendStatus(400);
-    //res.status(200).json({ success: false });
-    res.status(200).json({ success: true, data: { id: 1 } });
-})
+// Mounte Routes
 
-app.get('/api/v1/bootcamps', (req, res) => {
+app.use('/api/v1/bootcamps', bootcamps);
 
-    res.status(200).json({ success: true, msg: 'This is Bootcapms' });
-});
-app.post('/api/v1/bootcamps', (req, res) => {
+// app.get('/', (req, res) => {
 
-    res.status(200).json({ success: true, msg: 'Create Bootcapms' });
-});
+//     //res.send('Hello Node')
+//     //res.json({ name: 'Band', model: '1000' });
+//     //res.sendStatus(400);
+//     //res.status(200).json({ success: false });
+//     res.status(200).json({ success: true, data: { id: 1 } });
+// })
 
-app.put('/api/v1/bootcamps/:id', (req, res) => {
 
-    res.status(200).json({ success: true, msg: `Update Bootcamps ${req.params.id}` });
-});
-app.delete('/api/v1/bootcamps/:id', (req, res) => {
-
-    res.status(200).json({ success: true, msg: `Delete Bootcamps ${req.params.id}` });
-});
 
 const PORT = process.env.PORT || 5000;
 
