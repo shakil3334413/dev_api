@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 // const logger = require('./middleware/logger');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-
+var colors = require('colors');
 //Routes Conncet 
 const bootcamps = require('./routes/bootcamps');
 
@@ -42,13 +42,13 @@ const PORT = process.env.PORT || 5000;
 
 const server = app.listen(
     PORT,
-    console.log(`Server Running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+    console.log(`Server Running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold)
 );
 
 // Handle Unhandle promise Rejection
 
 process.on('unhandleRejection', (err, promise) => {
-    console.log(`Error:${err.message}`);
+    console.log(`Error:${err.message}`.red);
     //close server and exit process
     server.close(() => process.exit(1));
 

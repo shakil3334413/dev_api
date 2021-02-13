@@ -9,7 +9,8 @@ const conectDB = async() => {
         useFindAndModify: true
     });
 
-    console.log(`Mongoes Connected ${conn.connection.host}`);
+    console.log(`Mongoes Connected ${conn.connection.host}`
+        .cyan.underline.bold);
 }
 
 module.exports = conectDB
