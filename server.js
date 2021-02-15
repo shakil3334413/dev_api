@@ -7,6 +7,7 @@ var colors = require('colors');
 //Routes Conncet 
 const bootcamps = require('./routes/bootcamps');
 
+
 //load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -14,6 +15,9 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const app = express();
+
+//body parse
+app.use(express.json());
 
 //Dev Morgan middleware 
 
