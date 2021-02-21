@@ -6,7 +6,8 @@ const connectDB = require('./config/db');
 var colors = require('colors');
 //Routes Conncet 
 const bootcamps = require('./routes/bootcamps');
-
+//error middlware
+const errorHandler = require('./middleware/error');
 
 //load env vars
 dotenv.config({ path: './config/config.env' });
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 // Mounte Routes
 app.use('/api/v1/bootcamps', bootcamps);
 
-
+app.use(errorHandler);
 
 // app.get('/', (req, res) => {
 
